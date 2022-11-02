@@ -66,7 +66,7 @@ public class Compte {
     }
 
 
-     Compte(){
+     public Compte(){
         DateTimeFormatter dtf= DateTimeFormatter.ofPattern("dd/MM/YYYY hh:mm:ss");
          String current_date=dtf.format(LocalDateTime.now());
          idcompte = ++ctr;
@@ -76,7 +76,7 @@ public class Compte {
          setSolde(0.0);
 
      }
-     Compte(Client c ,double solde){
+     public Compte(Client c ,double solde){
          DateTimeFormatter dtf= DateTimeFormatter.ofPattern("dd/MM/YYYY hh:mm:ss");
          String current_date=dtf.format(LocalDateTime.now());
          idcompte = ++ctr;

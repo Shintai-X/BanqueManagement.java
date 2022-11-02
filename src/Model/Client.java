@@ -48,14 +48,15 @@ public class Client {
     public int getIdclient() {
         return idclient;
     }
-    Client(){
+    public Client(){
         idclient = ++ctr;
     }
-    Client(String nom , String prenom){
+    public Client(String nom , String prenom){
         idclient = ++ctr;
         setNom(nom);
         setPrenom(prenom);
     }
+
 
    /* public static void main(String[] args) {
         Client c1 = new Client();
