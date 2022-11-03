@@ -1,9 +1,12 @@
 package Model;
 
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Client {
     private static int ctr=0;
+    private  int ctr2=0;
     private int idclient;
     private String nom;
     private String prenom;
@@ -22,6 +25,15 @@ public class Client {
 
         }
 
+    }
+
+    public void setComptes(Compte comptes) {
+        this.comptes[ctr2] = comptes;
+        ctr2++;
+    }
+
+    public Compte[] getComptes() {
+        return comptes;
     }
 
     public void setPrenom(String prenom) {
@@ -57,8 +69,33 @@ public class Client {
         setPrenom(prenom);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return idclient == client.idclient;
+    }
 
-   /* public static void main(String[] args) {
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(ctr2, idclient, nom, prenom);
+        result = 31 * result + Arrays.hashCode(comptes);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "idclient=" + idclient +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", comptes=" + Arrays.toString(getComptes()) +
+                '}';
+    }
+
+
+    /* public static void main(String[] args) {
         Client c1 = new Client();
         String nom , prenom;
         Scanner clavier = new Scanner(System.in);
@@ -68,7 +105,7 @@ public class Client {
         System.out.println("Veuillez saisir le prenom du client");
         prenom= clavier.nextLine();
         c1.setPrenom(prenom);
-        System.out.println("Le nom du client est : "+ c1.getNom() +" et son prénom est: "+c1.getPrenom()+" et son id est:"+c1.getIdclient());
-    } */
+        System.out.println(c1.toString());
+    }*/
 
 }

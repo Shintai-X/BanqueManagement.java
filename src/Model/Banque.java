@@ -1,16 +1,19 @@
 package Model;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Banque {
     private static int ctr=0;
     private  int ctr2=0;
+    private  int ctr3=0;
     private int idbanque;
     private  String nomagence;
     private String emailagence;
     private int maxcomptes;
     private int maxclients;
     private Client[] clients = new Client[10];
+    // look arraylist
     private Compte[] comptes = new Compte[20];
 
 
@@ -24,6 +27,29 @@ public class Banque {
 
     public String getEmailagence() {
         return emailagence;
+    }
+
+    public Compte[] getComptes() {
+        return comptes;
+    }
+
+    public Client[] getClients() {
+        return clients;
+    }
+
+    public void setComptes(Compte cp) {
+
+        this.comptes[ctr2] = cp;
+        ctr2++;
+
+    }
+    public void setClients(Client cl) {
+        this.clients[ctr3] = cl;
+        ++ctr3;
+    }
+
+    public int getCtr3() {
+        return ctr3;
     }
 
     public void setNomagence(String nomagence) {
@@ -56,14 +82,21 @@ public class Banque {
         setEmailagence(emailagence);
     }
 
-    /*public static void main(String[] args) {
+    @Override
+    public String toString() {
+        return "Banque{" +
+                "clients=" + Arrays.toString(clients) +
+                '}';
+    }
+
+    /* public static void main(String[] args) {
         Banque b = new Banque();
-        String email;
-        Scanner clavier = new Scanner(System.in);
-        System.out.println("Veuillez saisir un email ");
-        email = clavier.nextLine();
-        b.setEmailagence(email);
-        System.out.println(b.getEmailagence());
+        Client cl = new Client();
+        cl.addclient();
+        b.setClients(cl);
+        b.addCompte();
+        System.out.println("hahah"+Arrays.toString(b.getClients()));
+
 
     }*/
 

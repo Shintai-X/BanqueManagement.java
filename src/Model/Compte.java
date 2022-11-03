@@ -87,6 +87,12 @@ public class Compte {
          setProprio(c);
      }
 
+    @Override
+    public String toString() {
+        return "Compte{" +
+                "solde=" + this.getSolde() +
+                '}';
+    }
 
     public static void main(String[] args) {
         Client c = new Client("Nom","Prenom");
