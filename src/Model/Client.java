@@ -7,10 +7,16 @@ import java.util.Scanner;
 public class Client {
     private static int ctr=0;
     private  int ctr2=0;
+    private  int ctr3=0;
     private int idclient;
     private String nom;
     private String prenom;
+    private String email;
     private Compte[] comptes = new Compte[2];
+
+    public void setIdclient(int idclient) {
+        this.idclient = idclient;
+    }
 
     public void setNom(String nom) {
         if(nom.matches("[A-Za-z ]*")) {
@@ -32,8 +38,23 @@ public class Client {
         ctr2++;
     }
 
+    public void setEmail(String email) {
+        if(email.matches("^(.+)@(.+)$")) {
+            this.email = email;
+        }
+        else{
+            Scanner clavier = new Scanner(System.in);
+            System.out.println("Attention!!Veuillez saisir un email Valide sous forme xxx@xxxx.xx:");
+            email = clavier.nextLine();
+            setEmail(email);
+
+
+        }
+    }
+
     public Compte[] getComptes() {
-        return comptes;
+        Compte[] cpts = Arrays.stream(comptes).filter(Objects::nonNull).toArray(Compte[]::new);
+        return cpts;
     }
 
     public void setPrenom(String prenom) {
@@ -47,6 +68,10 @@ public class Client {
             setPrenom(prenom);
         }
 
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getNom() {
@@ -63,11 +88,13 @@ public class Client {
     public Client(){
         idclient = ++ctr;
     }
-    public Client(String nom , String prenom){
+    public Client(String nom , String prenom , String email){
         idclient = ++ctr;
         setNom(nom);
         setPrenom(prenom);
+        setEmail(email);
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -84,15 +111,20 @@ public class Client {
         return result;
     }
 
+
+
     @Override
     public String toString() {
-        return "Client{" +
-                "idclient=" + idclient +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", comptes=" + Arrays.toString(getComptes()) +
-                '}';
-    }
+        return  "-> Client number: " + idclient + "\n" +
+                        "-> Client first name: " + nom + "\n" +
+                        "-> Client last name: " + prenom + "\n" +
+                        "-> Client email: " + email + "\n" +
+                        "-> Accounts: " + Arrays.toString(getComptes()) + "\n" +
+                        "------------------------------------------------" +"\n"
+                ;
+            }
+     }
+
 
 
     /* public static void main(String[] args) {
@@ -108,4 +140,4 @@ public class Client {
         System.out.println(c1.toString());
     }*/
 
-}
+

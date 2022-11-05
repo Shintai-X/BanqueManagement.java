@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Banque {
@@ -30,15 +31,17 @@ public class Banque {
     }
 
     public Compte[] getComptes() {
-        return comptes;
+        Compte[] cpts = Arrays.stream(comptes).filter(Objects::nonNull).toArray(Compte[]::new);
+        return cpts;
     }
 
     public Client[] getClients() {
-        return clients;
+        Client[] clts = Arrays.stream(clients).filter(Objects::nonNull).toArray(Client[]::new);
+        return clts;
+
     }
 
     public void setComptes(Compte cp) {
-
         this.comptes[ctr2] = cp;
         ctr2++;
 
@@ -73,9 +76,12 @@ public class Banque {
     public Banque(){
         idbanque =++ctr;
     }
-    public Banque(int maxclients , int maxcomptes , Compte c , Client cl){
+    public Banque(int maxclients , int maxcomptes , Compte c , Client cl , String emailagence){
         this.maxclients=maxclients;
         this.maxcomptes=maxcomptes;
+        this.emailagence=emailagence;
+        setClients(cl);
+        setComptes(c);
 
     }
     Banque(String email){
