@@ -116,6 +116,7 @@ public class ClientManager {
                 case 6:
                     AppManager ap = new AppManager(bq);
                     ap.finalapp();
+                    break;
 
             }
             String rep = question();

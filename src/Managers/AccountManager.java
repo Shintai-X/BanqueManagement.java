@@ -152,6 +152,7 @@ public class AccountManager {
                     case 9:
                         AppManager ap = new AppManager(bq);
                         ap.finalapp();
+                        break;
 
                 }
 
