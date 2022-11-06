@@ -100,9 +100,9 @@ public class ServiceFunction {
                 for(Compte cp2 : banque.getComptes()){
                     if(cp2!=null && cp2.getIdcompte()==id2){
                         cp.setSolde(cp.getSolde() + montant);
-                        cp.setJournalisation("Received  "+ montant + "from Account"+cp2.getIdcompte());
+                        cp.setJournalisation("Received "+ montant +" from Account number: "+cp2.getIdcompte());
                         cp2.setSolde(cp.getSolde() -montant);
-                        cp2.setJournalisation("Sent   "+ montant + "to Account number: "+cp.getIdcompte());
+                        cp2.setJournalisation("Sent "+ montant + " to Account number: "+cp.getIdcompte());
 
 
 

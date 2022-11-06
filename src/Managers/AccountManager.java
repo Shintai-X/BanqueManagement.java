@@ -15,13 +15,28 @@ public class AccountManager {
     public String question(){
         String answer="";
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Voulez vous continuez ?");
+        System.out.println("Do you want to go on ? ?");
         return answer = clavier.nextLine();
+    }
+    public static void errormessage() {
+        final String ANSI_RED = "\u001B[31m";
+        final String ANSI_RESET = "\u001B[0m";
+        final String ANSI_CYAN = "\u001B[36m";
+        final String ANSI_GREEN = "\u001B[32m";
+        String y = Character.toString( 10060 );
+        String z = "Please only answer by yes or no (y/n)";
+        String x = y+z+y;
+        System.out.println(ANSI_RED +x + ANSI_RESET);
+
     }
     AccountManager(Banque bq){
         this.bq=bq;
     }
     public void accountManager() {
+        final String ANSI_RESET = "\u001B[0m";
+        final String ANSI_GREEN = "\u001B[32m";
+        final String ANSI_BLUE = "\u001B[34m";
+        final String ANSI_CYAN = "\u001B[36m";
         ServiceCrud sc = new ServiceCrud(bq);
         ServiceFunction sf = new ServiceFunction(bq);
         boolean running=true;
@@ -34,20 +49,20 @@ public class AccountManager {
             int choice;
             Scanner clavier2 = new Scanner(System.in);
             System.out.println("------------------------------");
-            System.out.println("-Welcome to your bank Account Manager manager-");
+            System.out.println(Character.toString( 128184 )+ANSI_CYAN+"-Welcome to the account manager of inchallah bank-"+ ANSI_RESET+Character.toString( 128184 ));
             System.out.println("------------------------------");
-            System.out.println("-Enter[1] to create and add a new account-");
-            System.out.println("-Enter[2] to modify a account-");
-            System.out.println("-Enter[3] to delete a account-");
-            System.out.println("-Enter[4] to display all accounts-");
-            System.out.println("-Enter[5] to search a account-");
-            System.out.println("-Enter[6] to withdrawala account-");
-            System.out.println("-Enter[7] to fill a account-");
-            System.out.println("-Enter[8] to do a bank trasnfere-");
-            System.out.println("-Enter[9] to exit this menu -");
+            System.out.println(ANSI_GREEN+"-Enter[1] to create and add a new account-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[2] to modify a account-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[3] to delete a account-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[4] to display all accounts-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[5] to search a account-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[6] to withdrawala account-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[7] to fill a account-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[8] to do a bank trasnfere-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[9] to exit this menu -"+ANSI_RESET);
             System.out.println("------------------------------");
-            System.out.print("Choose a option:");
-                choice = clavier2.nextInt();
+            System.out.print(ANSI_BLUE+"Choose a option:"+ANSI_RESET);
+            choice = clavier2.nextInt();
                 switch (choice) {
                     case 1:
                         reponse2 = "";
@@ -61,7 +76,7 @@ public class AccountManager {
                                 jp=false;
 
                             } else {
-                                System.out.println("Please only answer by yes or no (y/n)");
+                                errormessage();
                             }
 
                         }
@@ -78,7 +93,7 @@ public class AccountManager {
                                 jp=false;
                                 break;
                             } else {
-                                System.out.println("Please only answer by yes or no (y/n)");
+                                errormessage();
                             }
                         }
                         break;
@@ -94,7 +109,7 @@ public class AccountManager {
                                 jp=false;
                                 break;
                             } else {
-                                System.out.println("Please only answer by yes or no (y/n)");
+                                errormessage();
                             }
                         }
                         break;
@@ -135,7 +150,7 @@ public class AccountManager {
                                 jp=false;
                                 break;
                             } else {
-                                System.out.println("Please only answer by yes or no (y/n)");
+                                errormessage();
                             }
                         }
                         break;
@@ -151,7 +166,7 @@ public class AccountManager {
                                 jp=false;
                                 break;
                             } else {
-                                System.out.println("Please only answer by yes or no (y/n)");
+                                errormessage();
                             }
                         }
                         break;
@@ -167,7 +182,7 @@ public class AccountManager {
                                 jp=false;
                                 break;
                             } else {
-                                System.out.println("Please only answer by yes or no (y/n)");
+                                errormessage();
                             }
                         }
                         break;
@@ -187,7 +202,7 @@ public class AccountManager {
                 break;
             }
             else{
-                System.out.println("Please only answer by yes or no (y/n)");
+                errormessage();
                 question();
         }
 

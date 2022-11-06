@@ -21,7 +21,20 @@ public class ClientManager {
         System.out.println("Voulez vous continuez ?");
         return answer = clavier.nextLine();
     }
+    public static void errormessage() {
+        final String ANSI_RED = "\u001B[31m";
+        final String ANSI_RESET = "\u001B[0m";
+        String y = Character.toString( 10060 );
+        String z = "Please only answer by yes or no (y/n)";
+        String x = y+z+y;
+        System.out.println(ANSI_RED +x + ANSI_RESET);
+
+    }
     public void accountManager(){
+        final String ANSI_CYAN = "\u001B[36m";
+        final String ANSI_RESET = "\u001B[0m";
+        final String ANSI_GREEN = "\u001B[32m";
+        final String ANSI_BLUE = "\u001B[34m";
         ServiceCrud sc = new ServiceCrud(bq);
         ServiceFunction sf = new ServiceFunction(bq);
         boolean running=true;
@@ -34,16 +47,18 @@ public class ClientManager {
             int choice;
             Scanner clavier2 = new Scanner(System.in);
             System.out.println("------------------------------");
-            System.out.println("-Welcome to your bank client Manager manager-");
+            System.out.println(Character.toString( 128694 )+ANSI_CYAN+"-Welcome to the client manager of inchallah bank-"+ ANSI_RESET+Character.toString( 128694 ));
+
             System.out.println("------------------------------");
-            System.out.println("-Enter[1] to create and add a new client-");
-            System.out.println("-Enter[2] to modify a client-");
-            System.out.println("-Enter[3] delete a client-");
-            System.out.println("-Enter[4] to display all clients-");
-            System.out.println("-Enter[5] to have information of a client-");
-            System.out.println("-Enter[6] to exit this menu-");
+            System.out.println(ANSI_GREEN+"-Enter[1] to create and add a new client-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[2] to modify a client-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[3] delete a client-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[4] to display all clients-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[5] to have information of a client-"+ANSI_RESET);
+            System.out.println(ANSI_GREEN+"-Enter[6] to exit this menu-"+ANSI_RESET);
             System.out.println("------------------------------");
-            System.out.print("Choose a option:");
+            System.out.print(ANSI_BLUE+"Choose a option:"+ANSI_RESET);
+
             choice = clavier2.nextInt();
             switch (choice){
                 case 1:
@@ -58,7 +73,7 @@ public class ClientManager {
                             jp=false;
                             break;
                         } else {
-                            System.out.println("Please only answer by yes or no (y/n)");
+                            errormessage();
                         }
                     }
                     break;
@@ -74,7 +89,7 @@ public class ClientManager {
                             jp=false;
                             break;
                         } else {
-                            System.out.println("Please only answer by yes or no (y/n)");
+                            errormessage();
                         }
                     }
                     break;
@@ -90,7 +105,7 @@ public class ClientManager {
                             jp=false;
                             break;
                         } else {
-                            System.out.println("Please only answer by yes or no (y/n)");
+                            errormessage();
                         }
                     }
                     break;
@@ -113,7 +128,7 @@ public class ClientManager {
                             jp=false;
                             break;
                         } else {
-                            System.out.println("Please only answer by yes or no (y/n)");
+                            errormessage();
 
                         }
                     }
@@ -133,7 +148,7 @@ public class ClientManager {
                 break;
             }
             else{
-                System.out.println("Please only answer by yes or no (y/n)");
+                errormessage();
                 question();
 
 
@@ -141,5 +156,7 @@ public class ClientManager {
         }
 
     }
+
+
     }
 
