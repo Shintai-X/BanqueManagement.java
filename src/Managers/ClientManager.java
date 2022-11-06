@@ -161,7 +161,7 @@ public class ClientManager {
             if(rep.equals("y")){
             }
             else if(rep.equals("n")){
-                System.out.println("Thank you for using our application , see you soon!");
+                System.out.println(Character.toString(128176) + ANSI_CYAN + "Thank you for using our application , see you soon!" + ANSI_RESET + Character.toString(128176));
                 running = false;
                 break;
             }

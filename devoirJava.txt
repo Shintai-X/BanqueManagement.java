@@ -1,0 +1,7 @@
+1)- local date time
+2)- tableau de journalisation[10] = tableau de string qui contient le nom des opérations réaliser sur le compte + date de l'operation
+3)- tout les membres sont privé 
+4)- pas besoin de faire tableau de journalisation dans la classe client
+5)- cree classe metier qui contient tout les fonction du service CRUD
+6)- appeler la creation client au milieu de la creation compte
+7à- ignorer service ++ et service utilitaire

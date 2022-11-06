@@ -37,13 +37,13 @@ public class ServiceCrud {
         Client cl = new Client();
         String nom , prenom , email;
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Veuillez saisir  le nom du client: ");
+        System.out.println("Please insert the lastname of the client: ");
         nom = clavier.nextLine();
         cl.setNom(nom);
-        System.out.println("Veuillez saisir  le prénom du client: ");
+        System.out.println("Please insert the firstname of the client: ");
         prenom = clavier.nextLine();
         cl.setPrenom(prenom);
-        System.out.println("Veuillez saisir  l'email  du client: ");
+        System.out.println("Please insert the email of the client: ");
         email = clavier.nextLine();
         banque.setClients(cl);
         cl.setEmail(email);

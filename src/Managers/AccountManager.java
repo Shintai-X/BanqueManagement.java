@@ -15,7 +15,7 @@ public class AccountManager {
     public String question(){
         String answer="";
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Do you want to go on ? ?");
+        System.out.println("Do you want to go on?");
         return answer = clavier.nextLine();
     }
     public static void errormessage() {
@@ -215,7 +215,7 @@ public class AccountManager {
             if(rep.equals("y")){
             }
             else if(rep.equals("n")){
-                System.out.println("Thank you for using our application , see you soon!");
+                System.out.println(Character.toString(128176) + ANSI_CYAN + "Thank you for using our application , see you soon!" + ANSI_RESET + Character.toString(128176));
                 running = false;
                 break;
             }
