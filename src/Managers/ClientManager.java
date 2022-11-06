@@ -30,6 +30,17 @@ public class ClientManager {
         System.out.println(ANSI_RED +x + ANSI_RESET);
 
     }
+    public  static void errormessage2(){
+        {
+            final String ANSI_RED = "\u001B[31m";
+            final String ANSI_RESET = "\u001B[0m";
+            String y = Character.toString( 10060 );
+            String z = "Please only answer by numbers you see on the list";
+            String x = y+z+y;
+            System.out.println(ANSI_RED +x + ANSI_RESET);
+
+        }
+    }
     public void accountManager(){
         final String ANSI_CYAN = "\u001B[36m";
         final String ANSI_RESET = "\u001B[0m";
@@ -39,6 +50,7 @@ public class ClientManager {
         ServiceFunction sf = new ServiceFunction(bq);
         boolean running=true;
         boolean jp = true;
+        boolean jx = true;
         String answer;
         String reponse2;
         Scanner clavier = new Scanner(System.in);
@@ -48,7 +60,6 @@ public class ClientManager {
             Scanner clavier2 = new Scanner(System.in);
             System.out.println("------------------------------");
             System.out.println(Character.toString( 128694 )+ANSI_CYAN+"-Welcome to the client manager of inchallah bank-"+ ANSI_RESET+Character.toString( 128694 ));
-
             System.out.println("------------------------------");
             System.out.println(ANSI_GREEN+"-Enter[1] to create and add a new client-"+ANSI_RESET);
             System.out.println(ANSI_GREEN+"-Enter[2] to modify a client-"+ANSI_RESET);
@@ -57,20 +68,26 @@ public class ClientManager {
             System.out.println(ANSI_GREEN+"-Enter[5] to have information of a client-"+ANSI_RESET);
             System.out.println(ANSI_GREEN+"-Enter[6] to exit this menu-"+ANSI_RESET);
             System.out.println("------------------------------");
-            System.out.print(ANSI_BLUE+"Choose a option:"+ANSI_RESET);
 
+            System.out.print(ANSI_BLUE+"Choose a option:"+ANSI_RESET);
             choice = clavier2.nextInt();
-            switch (choice){
+            while (choice > 6) {
+                errormessage2();
+                System.out.print(ANSI_BLUE + "Choose a option:" + ANSI_RESET);
+                choice = clavier.nextInt();
+            }
+
+            switch (choice) {
                 case 1:
                     sc.addclient();
-                    while(jp) {
+                    while (jp) {
                         System.out.println("Do you want to add a new client?(y/n)");
                         reponse2 = clavier3.nextLine();
                         if (reponse2.equals("y")) {
                             sc.addclient();
                             break;
                         } else if (reponse2.equals("n")) {
-                            jp=false;
+                            jp = false;
                             break;
                         } else {
                             errormessage();
@@ -86,7 +103,7 @@ public class ClientManager {
                             sc.modifycompte();
                             break;
                         } else if (reponse2.equals("n")) {
-                            jp=false;
+                            jp = false;
                             break;
                         } else {
                             errormessage();
@@ -102,7 +119,7 @@ public class ClientManager {
                             sc.deleteclient();
                             break;
                         } else if (reponse2.equals("n")) {
-                            jp=false;
+                            jp = false;
                             break;
                         } else {
                             errormessage();
@@ -110,7 +127,7 @@ public class ClientManager {
                     }
                     break;
                 case 4:
-                    for(Client elem : bq.getClients()) {
+                    for (Client elem : bq.getClients()) {
                         if (elem != null) {
                             System.out.println(elem.toString());
                         }
@@ -125,7 +142,7 @@ public class ClientManager {
                             sc.infoclient();
                             break;
                         } else if (reponse2.equals("n")) {
-                            jp=false;
+                            jp = false;
                             break;
                         } else {
                             errormessage();
@@ -139,6 +156,7 @@ public class ClientManager {
                     break;
 
             }
+
             String rep = question();
             if(rep.equals("y")){
             }
@@ -155,8 +173,11 @@ public class ClientManager {
             }
         }
 
-    }
+                }
+        }
 
 
-    }
+
+
+
 

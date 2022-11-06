@@ -104,8 +104,6 @@ public class ServiceFunction {
                         cp2.setSolde(cp.getSolde() -montant);
                         cp2.setJournalisation("Sent "+ montant + " to Account number: "+cp.getIdcompte());
 
-
-
                     }
                 }
 

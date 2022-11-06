@@ -29,6 +29,17 @@ public class AccountManager {
         System.out.println(ANSI_RED +x + ANSI_RESET);
 
     }
+    public  static void errormessage2(){
+        {
+            final String ANSI_RED = "\u001B[31m";
+            final String ANSI_RESET = "\u001B[0m";
+            String y = Character.toString( 10060 );
+            String z = "Please only answer by numbers you see on the list";
+            String x = y+z+y;
+            System.out.println(ANSI_RED +x + ANSI_RESET);
+
+        }
+    }
     AccountManager(Banque bq){
         this.bq=bq;
     }
@@ -40,6 +51,7 @@ public class AccountManager {
         ServiceCrud sc = new ServiceCrud(bq);
         ServiceFunction sf = new ServiceFunction(bq);
         boolean running=true;
+        boolean jx = true;
         String answer;
         String reponse2;
         Scanner clavier = new Scanner(System.in);
@@ -61,8 +73,13 @@ public class AccountManager {
             System.out.println(ANSI_GREEN+"-Enter[8] to do a bank trasnfere-"+ANSI_RESET);
             System.out.println(ANSI_GREEN+"-Enter[9] to exit this menu -"+ANSI_RESET);
             System.out.println("------------------------------");
-            System.out.print(ANSI_BLUE+"Choose a option:"+ANSI_RESET);
+            System.out.print(ANSI_BLUE + "Choose a option:" + ANSI_RESET);
             choice = clavier2.nextInt();
+            while (choice > 9) {
+                errormessage2();
+                System.out.print(ANSI_BLUE + "Choose a option:" + ANSI_RESET);
+                choice = clavier.nextInt();
+            }
                 switch (choice) {
                     case 1:
                         reponse2 = "";
@@ -73,7 +90,7 @@ public class AccountManager {
                             if (reponse2.equals("y")) {
                                 sc.addCompte();
                             } else if (reponse2.equals("n")) {
-                                jp=false;
+                                jp = false;
 
                             } else {
                                 errormessage();
@@ -90,7 +107,7 @@ public class AccountManager {
                                 sc.modifycompte();
                                 break;
                             } else if (reponse2.equals("n")) {
-                                jp=false;
+                                jp = false;
                                 break;
                             } else {
                                 errormessage();
@@ -99,14 +116,14 @@ public class AccountManager {
                         break;
                     case 3:
                         sc.deletecompte();
-                        while(jp) {
+                        while (jp) {
                             System.out.println("Do you want to delete another account?(y/n)");
                             reponse2 = clavier3.nextLine();
                             if (reponse2.equals("y")) {
                                 sc.deletecompte();
                                 break;
                             } else if (reponse2.equals("n")) {
-                                jp=false;
+                                jp = false;
                                 break;
                             } else {
                                 errormessage();
@@ -130,10 +147,11 @@ public class AccountManager {
                                 sc.infocompte();
                                 break;
                             } else if (reponse2.equals("n")) {
-                                jp=false;
+                                jp = false;
                                 break;
                             } else {
-                                System.out.println("Please only answer by yes or no (y/n)");;
+                                System.out.println("Please only answer by yes or no (y/n)");
+                                ;
                             }
                         }
                         break;
@@ -147,7 +165,7 @@ public class AccountManager {
                                 ;
                                 break;
                             } else if (reponse2.equals("n")) {
-                                jp=false;
+                                jp = false;
                                 break;
                             } else {
                                 errormessage();
@@ -163,7 +181,7 @@ public class AccountManager {
                                 sf.verser();
                                 break;
                             } else if (reponse2.equals("n")) {
-                                jp=false;
+                                jp = false;
                                 break;
                             } else {
                                 errormessage();
@@ -179,7 +197,7 @@ public class AccountManager {
                                 sf.virement();
                                 break;
                             } else if (reponse2.equals("n")) {
-                                jp=false;
+                                jp = false;
                                 break;
                             } else {
                                 errormessage();
@@ -205,7 +223,7 @@ public class AccountManager {
                 errormessage();
                 question();
         }
-
+        }
     }
+
          }
-     }
