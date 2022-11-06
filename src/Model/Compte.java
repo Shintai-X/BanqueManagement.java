@@ -105,6 +105,13 @@ public class Compte {
                 "*Account History: " + Arrays.toString(getJournalisation());
     }
 
+
+    public static void main(String[] args) {
+        Client cl = new Client();
+         Compte cp = new Compte(cl ,200);
+        System.out.println(cp.toString());
+    }
+
     }
 
 

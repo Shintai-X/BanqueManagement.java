@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class ServiceFunction {
     Banque banque;
 
-    ServiceFunction(){}
-    ServiceFunction(Banque banque){
+    public ServiceFunction(){}
+    public ServiceFunction(Banque banque){
         this.banque=banque;
     }
     public void verser(){
@@ -85,10 +85,10 @@ public class ServiceFunction {
 
 
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         Banque bq = new Banque();
         ServiceFunction sf = new ServiceFunction(bq);
         sf.verser();
-    }
+    }*/
 
 }

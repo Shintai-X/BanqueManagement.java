@@ -14,8 +14,13 @@ public class ServiceCrud {
     public void setBanque(Banque banque) {
         this.banque = banque;
     }
-    ServiceCrud(){}
-    ServiceCrud(Banque bq){
+
+    public Banque getBanque() {
+        return banque;
+    }
+
+    public ServiceCrud(){}
+    public ServiceCrud(Banque bq){
         this.banque=bq;
     }
     public Client addclient(){
@@ -30,12 +35,12 @@ public class ServiceCrud {
         cl.setPrenom(prenom);
         System.out.println("Veuillez saisir  l'email  du client: ");
         email = clavier.nextLine();
+        banque.setClients(cl);
         cl.setEmail(email);
         return  cl;
     }
-
     public void addCompte(){
-        String reponse1;
+        String reponse1 , nom , prenom , email;
         int reponse2;
         double solde;
         Scanner clavier = new Scanner(System.in);
@@ -58,9 +63,11 @@ public class ServiceCrud {
             reponse2 = clavier3.nextInt();
             for(Client elem : banque.getClients()){
                 if(elem != null && elem.getIdclient()==reponse2 ){
+
                     Compte cp = new Compte(elem , solde);
                     cp.setJournalisation("Creation of the account with a balance of  "+ solde +"!");
                     elem.setComptes(cp);
+                    banque.setComptes(cp);
 
                     break;
                 }
@@ -171,7 +178,7 @@ public class ServiceCrud {
     public void deletecompte(){
         int id;
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Donnez l'identifiant du compte:");
+        System.out.println("Donnez l'identifiant du compte a supprimer:");
         id = clavier.nextInt();
         for(int i=0 ; i<10 ; i++){
             if(banque.getComptes()[i]!=null && banque.getComptes()[i].getIdcompte()==id){
@@ -250,20 +257,127 @@ public class ServiceCrud {
 
 
     }*/
+    public void modifycompte(){
+        int id , id2;
+        Scanner clavier = new Scanner(System.in);
+        System.out.println("Que voulez vous modifier?:");
+        System.out.println("-Enter[1] to modify the owner-");
+        System.out.println("-Enter[2] to modify the balance-");
+        id = clavier.nextInt();
+        switch (id){
+            case 1:
+                System.out.println("Donnez l'identifiant du compte: ");
+                id = clavier.nextInt();
+                System.out.println("Donnez l'identifiant du nouveau proprio: ");
+                id2 = clavier.nextInt();
+                for(int i=0 ; i<banque.getComptes().length; i++){
+                    for(int j=0 ; j<banque.getClients().length ; j++){
+                    if(banque.getComptes()[i]!=null && banque.getComptes()[i].getIdcompte()==id) {
+                        if (banque.getClients()[j] != null && banque.getClients()[j].getIdclient() == id2) {
+                            banque.getComptes()[i].setProprio(banque.getClients()[j]);
+                            banque.getComptes()[i].setJournalisation("Modification of the owner to :"+banque.getClients()[j].getNom()+" "+banque.getClients()[j].getPrenom());
+                        }
+                    }
+                }
+                    }
+                break;
+            case 2:
+                System.out.println("Donnez l'identifiant du compte: ");
+                id = clavier.nextInt();
+                System.out.println("Donnez le nouveau solde: ");
+                id2 = clavier.nextInt();
+                for(int i=0 ; i<banque.getComptes().length ; i++){
+                    System.out.println("this is"+i);
+                        if(banque.getComptes()[i]!=null && banque.getComptes()[i].getIdcompte()==id) {
+                            banque.getComptes()[i].setSolde(id2);
+                            banque.getComptes()[i].setJournalisation("Modification of the balanceto: "+id2);
+
+                        }
+
+
+                }
+                break;
+
+        }
+
+
+
+    }
+    public  void modifyclient(){
+        int id , id2 ;
+        String var;
+        Scanner clavier = new Scanner(System.in);
+        System.out.println("Que voulez vous modifier?:");
+        System.out.println("-Enter[1] to modify the firstname-");
+        System.out.println("-Enter[2] to modify the lastname-");
+        System.out.println("-Enter[3] to modify the email-");
+        id = clavier.nextInt();
+        switch (id){
+            case 1:
+                System.out.println("Donnez l'identifiant du client: ");
+                id2 = clavier.nextInt();
+                for(int i=0 ; i<banque.getClients().length ; i++){
+                    if(banque.getClients()[i]!=null && banque.getClients()[i].getIdclient()==id){
+                        System.out.println("Donnez le nom du client: ");
+                        var = clavier.next();
+
+                        banque.getClients()[i].setNom(var);
+                    }
+                }
+                break;
+            case 2:
+                System.out.println("Donnez l'identifiant du client: ");
+                id2 = clavier.nextInt();
+                for(int i=0 ; i<banque.getClients().length ; i++){
+                    if(banque.getClients()[i]!=null && banque.getClients()[i].getIdclient()==id){
+                        System.out.println("Donnez le prenom du client: ");
+                        var = clavier.next();
+                        banque.getClients()[i].setPrenom(var);
+                    }
+                }
+                break;
+            case 3:
+                System.out.println("Donnez l'identifiant du client: ");
+                id2 = clavier.nextInt();
+                for(int i=0 ; i<banque.getClients().length ; i++){
+                    if(banque.getClients()[i]!=null && banque.getClients()[i].getIdclient()==id){
+                        System.out.println("Donnez l'email du client: ");
+                        var = clavier.next();
+                        banque.getClients()[i].setEmail(var);
+                    }
+                }
+                break;
+        }
+
+    }
 
 
 
     public static void main(String[] args) {
         Banque bq = new Banque();
        ServiceCrud sc = new ServiceCrud(bq);
-
       // sc.banque.setClients(sc.addclient());
        // sc.banque.setClients(sc.addclient());
         //sc.banque.setClients(sc.addclient());
-        sc.addCompte();
-        sc.addCompte();
+       // sc.addCompte();
+        //sc.addCompte();
         //sc.verser();
+       // sc.addCompte();
+        //sc.modifycompte();
+      /* for(Compte elem : sc.banque.getComptes()) {
+            if (elem != null) {
+                System.out.println(elem.toString());
+            }
+        }*/
+        //sc.modifyclient();
+     /*   for(Client elem : sc.banque.getClients()) {
+            if (elem != null) {
+                System.out.println(elem.toString());
+            }
+        }*/
 
+    }
+       // sc.modifycompte();
         //sc.retier();
         //sc.addCompte();
         //sc.addCompte();
@@ -273,21 +387,11 @@ public class ServiceCrud {
         //sc.infocompte();
        // sc.addCompte();
        //sc.addCompte();
-      /* for(Client elem : sc.banque.getClients()) {
-            if (elem != null) {
-                System.out.println(elem.toString());
-            }
-        }*/
+
        // System.out.println(Arrays.toString(sc.banque.getClients()));
 
 
-      for(Compte elem : sc.banque.getComptes()) {
-            if (elem != null) {
-                System.out.println(elem.toString());
-            }
-        }
 
-        }
 
 
 
