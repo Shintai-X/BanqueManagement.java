@@ -50,6 +50,9 @@ public class Banque {
         this.clients[ctr3] = cl;
         ++ctr3;
     }
+    public void setarraycl(Client[] clients){
+        this.clients=clients;
+    }
 
     public int getCtr3() {
         return ctr3;

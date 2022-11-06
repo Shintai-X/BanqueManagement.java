@@ -16,10 +16,24 @@ public class ServiceFunction {
         double montant;
         int id;
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Donnez l'identifiant du compte':");
-        id = clavier.nextInt();
-        System.out.println("Donnez le montant a verser:");
-        montant = clavier.nextDouble();
+        while (true) {
+            System.out.println("Donnez l'id du compte:");
+            try {
+                id = Integer.parseInt(clavier.next());
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please answer a int value!");
+            }
+        }
+        while (true) {
+            System.out.println("Donnez le montant verser :");
+            try {
+                montant = Double.parseDouble(clavier.next());
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please answer a double value!");
+            }
+        }
         for(Compte cp : banque.getComptes()){
             if(cp!=null && cp.getIdcompte()==id){
                 cp.setSolde(cp.getSolde()+montant);
@@ -34,8 +48,15 @@ public class ServiceFunction {
         Scanner clavier = new Scanner(System.in);
         System.out.println("Donnez l'identifiant du compte':");
         id = clavier.nextInt();
-        System.out.println("Donnez le montant a retirer:");
-        montant = clavier.nextDouble();
+        while (true) {
+            System.out.println("Donnez le montant a retuer :");
+            try {
+                montant = Double.parseDouble(clavier.next());
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please answer a double value!");
+            }
+        }
         for(Compte cp : banque.getComptes()){
             if(cp!=null && cp.getIdcompte()==id){
                 double var = cp.getSolde()-montant;
@@ -54,10 +75,24 @@ public class ServiceFunction {
         int id1,id2;
         double montant;
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Donnez l'identifiant du compte a créditer':");
-        id1 = clavier.nextInt();
-        System.out.println("Donnez l'identifiant du compte a débiter':");
-        id2 = clavier.nextInt();
+        while (true) {
+            System.out.println("Donnez l'id du compte a crediter:");
+            try {
+                id1 = Integer.parseInt(clavier.next());
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please answer a int value!");
+            }
+        }
+        while (true) {
+            System.out.println("Donnez l'id du compte a debiter:");
+            try {
+                id2 = Integer.parseInt(clavier.next());
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please answer a int value!");
+            }
+        }
         System.out.println("Donnez le montant':");
         montant = clavier.nextDouble();
         for(Compte cp : banque.getComptes()){

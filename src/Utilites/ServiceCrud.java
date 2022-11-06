@@ -9,6 +9,21 @@ import java.util.Scanner;
 import java.util.Arrays;
 
 public class ServiceCrud {
+
+
+
+    public void verificationid(int id , Scanner clavier){
+        while (true) {
+            System.out.println("Donnez l'identifiant du client: ");
+            try {
+                id = Integer.parseInt(clavier.next());
+
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please write a int!");
+            }
+        }
+    }
     Banque banque;
 
     public void setBanque(Banque banque) {
@@ -46,8 +61,15 @@ public class ServiceCrud {
         Scanner clavier = new Scanner(System.in);
         Scanner clavier2 = new Scanner(System.in);
         Scanner clavier3 = new Scanner(System.in);
-        System.out.println("Donnez le solde :");
-        solde = clavier.nextDouble();
+        while (true) {
+            System.out.println("Donnez le solde :");
+            try {
+                solde = Double.parseDouble(clavier.next());
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please answer a double value!");
+            }
+        }
         System.out.println("Est ce que l'utilisateur de ce compte est un nouveau clients ? (y/n)");
         reponse1 = clavier2.nextLine();
         if(reponse1.equals("y")){
@@ -86,10 +108,26 @@ public class ServiceCrud {
         int idcl , idcp;
         Scanner clavier = new Scanner(System.in);
         Scanner clavier2 = new Scanner(System.in);
-        System.out.println("Donnez l'identifiant du client: ");
-        idcl = clavier.nextInt();
-        System.out.println("Donnez l'indentifiant du compte: ");
-        idcp = clavier.nextInt();
+        while (true) {
+            System.out.println("Donnez l'identifiant du client: ");
+            try {
+                idcl = Integer.parseInt(clavier.next());
+
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please write a int!");
+            }
+        }
+        while (true) {
+            System.out.println("Donnez l'indentifiant du compte: ");
+            try {
+                idcp = Integer.parseInt(clavier.next());
+
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please write a int!");
+            }
+        }
         for(Client elem: banque.getClients()){
             if(elem != null && elem.getIdclient()==idcl){
                 for(Compte elem2 : banque.getComptes()){
@@ -111,8 +149,16 @@ public class ServiceCrud {
         int id;
         Scanner clavier = new Scanner(System.in);
         Client cl = new Client();
-        System.out.println("Donnez l'identifiant du client:");
-        id = clavier.nextInt();
+        while (true) {
+            System.out.println("Donnez l'identifiant du client: ");
+            try {
+                id = Integer.parseInt(clavier.next());
+
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please write a int!");
+            }
+        }
         for(Client elem : banque.getClients()){
             if(elem != null && elem.getIdclient() == id){
                 cl = elem;
@@ -138,8 +184,15 @@ public class ServiceCrud {
         int id;
         Scanner clavier = new Scanner(System.in);
         Client cl = new Client();
-        System.out.println("Donnez l'identifiant du client:");
-        id = clavier.nextInt();
+        while (true) {
+            System.out.println("Donnez l'id du client:");
+            try {
+                id = Integer.parseInt(clavier.next());
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please answer a int value!");
+            }
+        }
         for(Client elem : banque.getClients()){
             if(elem != null && elem.getIdclient() == id){
                 cl = elem;
@@ -162,14 +215,42 @@ public class ServiceCrud {
         System.out.println( cp.toString());
     }
 
+    public static Client[] removeclient(Client[] arr, int index)
+    {
+        if (arr == null || index < 0 || index >= arr.length) {
+            return arr;
+        }
+
+        Client[] anotherArray = new Client[arr.length - 1];
+        for (int i = 0, k = 0; i < arr.length; i++) {
+            if (i == index) {
+                continue;
+            }
+
+            anotherArray[k++] = arr[i];
+        }
+        return anotherArray;
+    }
+
     public void deleteclient(){
         int id;
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Donnez l'identifiant du client:");
-        id = clavier.nextInt();
-        for(int i=0 ; i<10 ; i++){
+        while (true) {
+            System.out.println("Donnez l'identifiant du client: ");
+            try {
+                id = Integer.parseInt(clavier.next());
+
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please write a int!");
+            }
+        }
+        for(int i=0 ; i<banque.getClients().length ; i++){
             if(banque.getClients()[i]!=null && banque.getClients()[i].getIdclient()==id){
-                banque.getClients()[i]=null;
+               Client[] clts = new Client[10];
+               clts = removeclient(banque.getClients(),i);
+               banque.setarraycl(clts);
+
             }
         }
 
@@ -178,8 +259,15 @@ public class ServiceCrud {
     public void deletecompte(){
         int id;
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Donnez l'identifiant du compte a supprimer:");
-        id = clavier.nextInt();
+        while (true) {
+            System.out.println("Donnez l'id du compte:");
+            try {
+                id = Integer.parseInt(clavier.next());
+                break;
+            } catch (NumberFormatException ignore) {
+                System.out.println("Invalid input please answer a int value!");
+            }
+        }
         for(int i=0 ; i<10 ; i++){
             if(banque.getComptes()[i]!=null && banque.getComptes()[i].getIdcompte()==id){
                 banque.getComptes()[i]=null;
@@ -358,8 +446,9 @@ public class ServiceCrud {
        ServiceCrud sc = new ServiceCrud(bq);
       // sc.banque.setClients(sc.addclient());
        // sc.banque.setClients(sc.addclient());
-        //sc.banque.setClients(sc.addclient());
-       // sc.addCompte();
+        sc.banque.setClients(sc.addclient());
+        System.out.println(sc.searchclient().toString());
+        //sc.addCompte();
         //sc.addCompte();
         //sc.verser();
        // sc.addCompte();

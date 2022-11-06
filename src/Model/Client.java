@@ -57,6 +57,7 @@ public class Client {
         return cpts;
     }
 
+
     public void setPrenom(String prenom) {
         if(prenom.matches("[A-Za-z ]*")) {
             this.prenom = prenom;
@@ -110,6 +111,8 @@ public class Client {
         result = 31 * result + Arrays.hashCode(comptes);
         return result;
     }
+
+
 
 
 
