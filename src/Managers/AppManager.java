@@ -15,7 +15,7 @@ public class AppManager {
         ClientManager cm = new ClientManager(bq);
         int reponse;
         Scanner clavier = new Scanner(System.in);
-        System.out.println("-Welcome to your bank Manager-");
+        System.out.println("-Welcome to Inchallah bank -");
         System.out.println("------------------------------");
         System.out.println("-Enter[1] to manage the accounts-");
         System.out.println("-Enter[2] to manage the clients -");
@@ -29,7 +29,7 @@ public class AppManager {
             case 2:
                 cm.accountManager();
             case 3:
-                System.out.println("Merci d'avoir utilisé notre application! a la prochaine");
+                System.out.println("Thank you for using our application , see you soon!");
                 System.exit(0);
 
         }

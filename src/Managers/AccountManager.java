@@ -18,7 +18,6 @@ public class AccountManager {
         System.out.println("Voulez vous continuez ?");
         return answer = clavier.nextLine();
     }
-
     AccountManager(Banque bq){
         this.bq=bq;
     }
@@ -31,6 +30,7 @@ public class AccountManager {
         Scanner clavier = new Scanner(System.in);
         Scanner clavier3 = new Scanner(System.in);
         while(running) {
+            boolean jp = true;
             int choice;
             Scanner clavier2 = new Scanner(System.in);
             System.out.println("------------------------------");
@@ -52,40 +52,50 @@ public class AccountManager {
                     case 1:
                         reponse2 = "";
                         sc.addCompte();
-                        System.out.println("Vous voulez ajouter un nouveau compte?(y/n)");
-                        reponse2 = clavier3.nextLine();
-                        if (reponse2.equals("y")) {
-                            sc.addCompte();
-                        } else if (reponse2.equals("n")) {
+                        while (jp) {
+                            System.out.println("Do you want to add a new accoun?(y/n)");
+                            reponse2 = clavier3.nextLine();
+                            if (reponse2.equals("y")) {
+                                sc.addCompte();
+                            } else if (reponse2.equals("n")) {
+                                jp=false;
 
-                        } else {
-                            System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                            } else {
+                                System.out.println("Please only answer by yes or no (y/n)");
+                            }
+
                         }
                         break;
                     case 2:
                         sc.modifycompte();
-                        System.out.println("Vous voulez modifier un autre compte?(y/n)");
-                        reponse2 = clavier3.nextLine();
-                        if (reponse2.equals("y")) {
-                            sc.modifycompte();
-                            break;
-                        } else if (reponse2.equals("n")) {
-                            break;
-                        } else {
-                            System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                        while (jp) {
+                            System.out.println("Do you want to modify another account?(y/n)");
+                            reponse2 = clavier3.nextLine();
+                            if (reponse2.equals("y")) {
+                                sc.modifycompte();
+                                break;
+                            } else if (reponse2.equals("n")) {
+                                jp=false;
+                                break;
+                            } else {
+                                System.out.println("Please only answer by yes or no (y/n)");
+                            }
                         }
                         break;
                     case 3:
                         sc.deletecompte();
-                        System.out.println("Vous voulez supprimer un autre compte?(y/n)");
-                        reponse2 = clavier3.nextLine();
-                        if (reponse2.equals("y")) {
-                            sc.deletecompte();
-                            break;
-                        } else if (reponse2.equals("n")) {
-                            break;
-                        } else {
-                            System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                        while(jp) {
+                            System.out.println("Do you want to delete another account?(y/n)");
+                            reponse2 = clavier3.nextLine();
+                            if (reponse2.equals("y")) {
+                                sc.deletecompte();
+                                break;
+                            } else if (reponse2.equals("n")) {
+                                jp=false;
+                                break;
+                            } else {
+                                System.out.println("Please only answer by yes or no (y/n)");
+                            }
                         }
                         break;
                     case 4:
@@ -98,55 +108,67 @@ public class AccountManager {
                         break;
                     case 5:
                         sc.infocompte();
-                        System.out.println("Vous voulez les information d'un autre compte?(y/n)");
-                        reponse2 = clavier3.nextLine();
-                        if (reponse2.equals("y")) {
-                            sc.infocompte();
-                            break;
-                        } else if (reponse2.equals("n")) {
-                            break;
-                        } else {
-                            System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                        while (jp) {
+                            System.out.println("Do you want the information of a other account?(y/n)");
+                            reponse2 = clavier3.nextLine();
+                            if (reponse2.equals("y")) {
+                                sc.infocompte();
+                                break;
+                            } else if (reponse2.equals("n")) {
+                                jp=false;
+                                break;
+                            } else {
+                                System.out.println("Please only answer by yes or no (y/n)");;
+                            }
                         }
                         break;
                     case 6:
                         sf.retier();
-                        System.out.println("Vous encore faire un retrait ?(y/n)");
-                        reponse2 = clavier3.nextLine();
-                        if (reponse2.equals("y")) {
-                            sf.retier();
-                            ;
-                            break;
-                        } else if (reponse2.equals("n")) {
-                            break;
-                        } else {
-                            System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                        while (jp) {
+                            System.out.println("Do you want to do another withdrawl?(y/n)");
+                            reponse2 = clavier3.nextLine();
+                            if (reponse2.equals("y")) {
+                                sf.retier();
+                                ;
+                                break;
+                            } else if (reponse2.equals("n")) {
+                                jp=false;
+                                break;
+                            } else {
+                                System.out.println("Please only answer by yes or no (y/n)");
+                            }
                         }
                         break;
                     case 7:
                         sf.verser();
-                        System.out.println("Vous encore faire un versement? ?(y/n)");
-                        reponse2 = clavier3.nextLine();
-                        if (reponse2.equals("y")) {
-                            sf.verser();
-                            break;
-                        } else if (reponse2.equals("n")) {
-                            break;
-                        } else {
-                            System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                        while (jp) {
+                            System.out.println("Do you want to another payement? ?(y/n)");
+                            reponse2 = clavier3.nextLine();
+                            if (reponse2.equals("y")) {
+                                sf.verser();
+                                break;
+                            } else if (reponse2.equals("n")) {
+                                jp=false;
+                                break;
+                            } else {
+                                System.out.println("Please only answer by yes or no (y/n)");
+                            }
                         }
                         break;
                     case 8:
                         sf.virement();
-                        System.out.println("Vous encore faire un virement ?(y/n)");
-                        reponse2 = clavier3.nextLine();
-                        if (reponse2.equals("y")) {
-                            sf.virement();
-                            break;
-                        } else if (reponse2.equals("n")) {
-                            break;
-                        } else {
-                            System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                        while (jp) {
+                            System.out.println("Do you want to do another bank transfer(y/n)");
+                            reponse2 = clavier3.nextLine();
+                            if (reponse2.equals("y")) {
+                                sf.virement();
+                                break;
+                            } else if (reponse2.equals("n")) {
+                                jp=false;
+                                break;
+                            } else {
+                                System.out.println("Please only answer by yes or no (y/n)");
+                            }
                         }
                         break;
                     case 9:
@@ -160,12 +182,12 @@ public class AccountManager {
             if(rep.equals("y")){
             }
             else if(rep.equals("n")){
-                System.out.println("Merci d'avoir utilisé notre application! a la prochaine");
+                System.out.println("Thank you for using our application , see you soon!");
                 running = false;
                 break;
             }
             else{
-                System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                System.out.println("Please only answer by yes or no (y/n)");
                 question();
         }
 

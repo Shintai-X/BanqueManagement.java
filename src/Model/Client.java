@@ -3,6 +3,7 @@ package Model;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Client {
     private static int ctr=0;
@@ -34,12 +35,13 @@ public class Client {
     }
 
     public void setComptes(Compte comptes) {
-        this.comptes[ctr2] = comptes;
-        ctr2++;
+            this.comptes[ctr2] = comptes;
+            ctr2++;
+
     }
 
     public void setEmail(String email) {
-        if(email.matches("^(.+)@(.+)$")) {
+        if(email.matches("^(.+)@(.+).(.+)$")) {
             this.email = email;
         }
         else{
@@ -112,10 +114,6 @@ public class Client {
         return result;
     }
 
-
-
-
-
     @Override
     public String toString() {
         return  "-> Client number: " + idclient + "\n" +
@@ -126,21 +124,11 @@ public class Client {
                         "------------------------------------------------" +"\n"
                 ;
             }
+
      }
 
 
 
-    /* public static void main(String[] args) {
-        Client c1 = new Client();
-        String nom , prenom;
-        Scanner clavier = new Scanner(System.in);
-        System.out.println("Veuillez saisir le nom du client");
-        nom = clavier.nextLine();
-        c1.setNom(nom);
-        System.out.println("Veuillez saisir le prenom du client");
-        prenom= clavier.nextLine();
-        c1.setPrenom(prenom);
-        System.out.println(c1.toString());
-    }*/
+
 
 

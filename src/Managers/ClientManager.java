@@ -15,7 +15,6 @@ public class ClientManager {
     ClientManager(Banque bq){
         this.bq=bq;
     }
-
     public String question(){
         String answer="";
         Scanner clavier = new Scanner(System.in);
@@ -26,6 +25,7 @@ public class ClientManager {
         ServiceCrud sc = new ServiceCrud(bq);
         ServiceFunction sf = new ServiceFunction(bq);
         boolean running=true;
+        boolean jp = true;
         String answer;
         String reponse2;
         Scanner clavier = new Scanner(System.in);
@@ -48,47 +48,50 @@ public class ClientManager {
             switch (choice){
                 case 1:
                     sc.addclient();
-                    System.out.println("Vous voulez ajouter un nouveau client?(y/n)");
-                    reponse2 = clavier3.nextLine();
-                    if(reponse2.equals("y")){
-                        sc.addclient();
-                        break;
-                    }
-                    else if(reponse2.equals("n")){
-                        break;
-                    }
-                    else{
-                        System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                    while(jp) {
+                        System.out.println("Do you want to add a new client?(y/n)");
+                        reponse2 = clavier3.nextLine();
+                        if (reponse2.equals("y")) {
+                            sc.addclient();
+                            break;
+                        } else if (reponse2.equals("n")) {
+                            jp=false;
+                            break;
+                        } else {
+                            System.out.println("Please only answer by yes or no (y/n)");
+                        }
                     }
                     break;
                 case 2:
                     sc.modifyclient();
-                    System.out.println("Vous voulez modifier un autre client?(y/n)");
-                    reponse2 = clavier3.nextLine();
-                    if(reponse2.equals("y")){
-                        sc.modifycompte();
-                        break;
-                    }
-                    else if(reponse2.equals("n")){
-                        break;
-                    }
-                    else{
-                        System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                    while (jp) {
+                        System.out.println("Do you want to modify another client?(y/n)");
+                        reponse2 = clavier3.nextLine();
+                        if (reponse2.equals("y")) {
+                            sc.modifycompte();
+                            break;
+                        } else if (reponse2.equals("n")) {
+                            jp=false;
+                            break;
+                        } else {
+                            System.out.println("Please only answer by yes or no (y/n)");
+                        }
                     }
                     break;
                 case 3:
                     sc.deleteclient();
-                    System.out.println("Vous voulez supprimer un autre client?(y/n)");
-                    reponse2 = clavier3.nextLine();
-                    if(reponse2.equals("y")){
-                        sc.deleteclient();
-                        break;
-                    }
-                    else if(reponse2.equals("n")){
-                        break;
-                    }
-                    else{
-                        System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                    while (jp) {
+                        System.out.println("Do you want to delete another client?(y/n)");
+                        reponse2 = clavier3.nextLine();
+                        if (reponse2.equals("y")) {
+                            sc.deleteclient();
+                            break;
+                        } else if (reponse2.equals("n")) {
+                            jp=false;
+                            break;
+                        } else {
+                            System.out.println("Please only answer by yes or no (y/n)");
+                        }
                     }
                     break;
                 case 4:
@@ -100,17 +103,19 @@ public class ClientManager {
                     break;
                 case 5:
                     sc.infoclient();
-                    System.out.println("Vous voulez les information d'un autre client?(y/n)");
-                    reponse2 = clavier3.nextLine();
-                    if(reponse2.equals("y")){
-                        sc.infoclient();
-                        break;
-                    }
-                    else if(reponse2.equals("n")){
-                        break;
-                    }
-                    else{
+                    while (jp) {
+                        System.out.println("Do you want the information of another account?(y/n)");
+                        reponse2 = clavier3.nextLine();
+                        if (reponse2.equals("y")) {
+                            sc.infoclient();
+                            break;
+                        } else if (reponse2.equals("n")) {
+                            jp=false;
+                            break;
+                        } else {
+                            System.out.println("Please only answer by yes or no (y/n)");
 
+                        }
                     }
                     break;
                 case 6:
@@ -123,12 +128,12 @@ public class ClientManager {
             if(rep.equals("y")){
             }
             else if(rep.equals("n")){
-                System.out.println("Merci d'avoir utilisé notre application! a la prochaine");
+                System.out.println("Thank you for using our application , see you soon!");
                 running = false;
                 break;
             }
             else{
-                System.out.println("Réponder par y(yes) ou n(non) seulement s'il vous plait!");
+                System.out.println("Please only answer by yes or no (y/n)");
                 question();
 
 

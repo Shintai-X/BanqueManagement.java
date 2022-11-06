@@ -17,7 +17,7 @@ public class ServiceFunction {
         int id;
         Scanner clavier = new Scanner(System.in);
         while (true) {
-            System.out.println("Donnez l'id du compte:");
+            System.out.println("Please insert the id of the account");
             try {
                 id = Integer.parseInt(clavier.next());
                 break;
@@ -26,7 +26,7 @@ public class ServiceFunction {
             }
         }
         while (true) {
-            System.out.println("Donnez le montant verser :");
+            System.out.println("Please insert the balance you want to add::");
             try {
                 montant = Double.parseDouble(clavier.next());
                 break;
@@ -46,10 +46,10 @@ public class ServiceFunction {
         double montant;
         int id;
         Scanner clavier = new Scanner(System.in);
-        System.out.println("Donnez l'identifiant du compte':");
+        System.out.println("Please insert the id of the account:");
         id = clavier.nextInt();
         while (true) {
-            System.out.println("Donnez le montant a retuer :");
+            System.out.println("Please insert the balance you want to withdrawl:");
             try {
                 montant = Double.parseDouble(clavier.next());
                 break;
@@ -62,7 +62,7 @@ public class ServiceFunction {
                 double var = cp.getSolde()-montant;
                 if(var>0){cp.setSolde(var);}
                 else {
-                    System.out.println("Pas Assez d'argent");
+                    System.out.println("Not Enough Money");
                     break;
                 }
 
@@ -76,7 +76,7 @@ public class ServiceFunction {
         double montant;
         Scanner clavier = new Scanner(System.in);
         while (true) {
-            System.out.println("Donnez l'id du compte a crediter:");
+            System.out.println("Please insert the id of the account1:");
             try {
                 id1 = Integer.parseInt(clavier.next());
                 break;
@@ -85,7 +85,7 @@ public class ServiceFunction {
             }
         }
         while (true) {
-            System.out.println("Donnez l'id du compte a debiter:");
+            System.out.println("Please insert the id of the account2:");
             try {
                 id2 = Integer.parseInt(clavier.next());
                 break;
@@ -93,14 +93,12 @@ public class ServiceFunction {
                 System.out.println("Invalid input please answer a int value!");
             }
         }
-        System.out.println("Donnez le montant':");
+        System.out.println("Please insert the balance:");
         montant = clavier.nextDouble();
         for(Compte cp : banque.getComptes()){
             if(cp!=null && cp.getIdcompte() ==id1){
-                System.out.println("HADI WAHD");
                 for(Compte cp2 : banque.getComptes()){
                     if(cp2!=null && cp2.getIdcompte()==id2){
-                        System.out.println("HADI ZOUJ");
                         cp.setSolde(cp.getSolde() + montant);
                         cp.setJournalisation("Received  "+ montant + "from Account"+cp2.getIdcompte());
                         cp2.setSolde(cp.getSolde() -montant);
@@ -117,13 +115,4 @@ public class ServiceFunction {
 
 
     }
-
-
-
-   /* public static void main(String[] args) {
-        Banque bq = new Banque();
-        ServiceFunction sf = new ServiceFunction(bq);
-        sf.verser();
-    }*/
-
 }

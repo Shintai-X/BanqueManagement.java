@@ -66,12 +66,12 @@ public class Banque {
     }
 
     public void setEmailagence(String emailagence) {
-        if(emailagence.matches("^(.+)@(.+)$")) {
+        if(emailagence.matches("^(.+)@(.+).(.+)$")) {
             this.emailagence = emailagence;
         }
         else{
             Scanner clavier = new Scanner(System.in);
-            System.out.println("Attention!!Veuillez saisir un email Valide sous forme xxx@xxxx.xx:");
+            System.out.println("Care please insert a email with this form: xxx@xxxx.xx:");
             emailagence = clavier.nextLine();
             setEmailagence(emailagence);
 
@@ -101,15 +101,6 @@ public class Banque {
                 '}';
     }
 
-    /* public static void main(String[] args) {
-        Banque b = new Banque();
-        Client cl = new Client();
-        cl.addclient();
-        b.setClients(cl);
-        b.addCompte();
-        System.out.println("hahah"+Arrays.toString(b.getClients()));
 
-
-    }*/
 
 }
