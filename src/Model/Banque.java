@@ -53,6 +53,9 @@ public class Banque {
     public void setarraycl(Client[] clients){
         this.clients=clients;
     }
+    public void setarraycp(Compte[] comptes){
+        this.comptes=comptes;
+    }
 
     public int getCtr3() {
         return ctr3;

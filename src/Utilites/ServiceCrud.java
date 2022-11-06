@@ -231,6 +231,22 @@ public class ServiceCrud {
         }
         return anotherArray;
     }
+    public static Compte[] removecompte(Compte[] arr, int index)
+    {
+        if (arr == null || index < 0 || index >= arr.length) {
+            return arr;
+        }
+
+        Compte[] anotherArray = new Compte[arr.length - 1];
+        for (int i = 0, k = 0; i < arr.length; i++) {
+            if (i == index) {
+                continue;
+            }
+
+            anotherArray[k++] = arr[i];
+        }
+        return anotherArray;
+    }
 
     public void deleteclient(){
         int id;
@@ -268,9 +284,11 @@ public class ServiceCrud {
                 System.out.println("Invalid input please answer a int value!");
             }
         }
-        for(int i=0 ; i<10 ; i++){
+        for(int i=0 ; i<banque.getComptes().length ; i++){
             if(banque.getComptes()[i]!=null && banque.getComptes()[i].getIdcompte()==id){
-                banque.getComptes()[i]=null;
+                Compte[]  cpts = new Compte[20];
+                cpts  = removecompte(banque.getComptes() , i);
+                banque.setarraycp(cpts);
             }
         }
 
